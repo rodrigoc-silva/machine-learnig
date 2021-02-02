@@ -51,7 +51,73 @@ print(j)
 k = np.indices((2, 2))
 print(k)
 
-# pg 80
+# NumPy datatype
+# let numpy choose the datatype
+x = np.array([0, 1])
+y = np.array([2.0, 3.0])
+# force a particular datatype
+z = np.array([5, 6], dtype=np.int64)
+print(x.dtype, y.dtype, z.dtype)
+# field access
+x = np.zeros((3, 3), dtype=[('a', np.int32), ('b', np.float64, (3, 3))])
+print("x['a'].shape:", x['a'].shape)
+print("x['a'].dtype:", x['a'].dtype)
+print("x['b'].shape:", x['b'].shape)
+print("x['b'].dtype:", x['b'].dtype)
+
+# basic slicing
+x = np.array([5, 6, 7, 8, 9])
+print(x[0:5:2])
+print(x[-2:5])
+print(x[-1:1:-1])
+print(x[4:])
+# basic slicing
+y = np.array([[[1], [2], [3]], [[4], [5], [6]]])
+print("shape of y:", y.shape)
+print(y[1:3])
+# create a rank 2 array with shape (3, 4)
+a = np.array([[5, 6, 7, 8], [1, 2, 3, 4], [9, 10, 11, 12]])
+print("Array 'a':", a)
+# use slicing to pull out the subarray consisting of the first 2 rows
+# and columns 1 and 2; b is the following array of shape (2, 2)
+# [[2 3]
+#   [6 7]]
+b = a[:2, 1:3]
+print("array 'b':", b)
+print(a[0, 1])
+b[0, 0] = 77
+print(a[0, 1])
+# accessing middle row array in two ways
+row_r1 = a[1, :] # Rank 1 view of the second row of a
+row_r2 = a[1:2, :] # Rank 2 view of the second row of a
+print(row_r1, row_r1.shape)
+print(row_r2, row_r2.shape)
+# accessing columns
+col_r1 = a[:, 1]
+col_r2 = a[:, 1:2]
+print(col_r1, col_r1.shape)
+print(col_r2, col_r2.shape)
+
+# advanced indexing
+# an example of integer array indexing.
+# the returned array will have shape (2, ) and
+print(a[[0, 1], [0, 1]])
+# the above example of integer array indexing is equivalent to this:
+print(np.array([a[0, 0], a[1, 1]]))
+# when you use integer array indexing, you can reuse the same element from the source array:
+print(a[[0, 0], a[1, 1]])
+# equivalent to the previous integer array indexing example:
+print(np.array([a[1, 1], a[1, 1]]))
+# boolean array indexing:
+a = np.array([[1, 2], [3, 4], [5, 6]])
+# find the elements of a that are bigger than 2
+print(a > 2)
+# to get the actual value
+print(a[a > 2])
+
+
+
+# pg 84 array math
 
 
 
