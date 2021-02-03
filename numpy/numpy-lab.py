@@ -115,9 +115,69 @@ print(a > 2)
 # to get the actual value
 print(a[a > 2])
 
+# Array math
+x =np.array([[1, 2], [3, 4],[5, 6]])
+y = np.array([[7, 8], [9, 10],[11, 12]])
+# sum; both produce teh array
+print(x + y)
+print(np.add(x, y))
+# difference; both produce the array
+print(x - y)
+print(np.subtract(x, y))
+# product; both produce the array
+print(x * y)
+print(np.multiply(x, y))
+# division; both produce the array
+print(x / y)
+print(np.divide(x, y))
+# square root; produces the array
+print(np.sqrt(x))
+# inner product of vector; both produce 219
+a = np.array([9, 10])
+b = np.array([11, 12])
+print(a.dot(b))
+print(np.dot(a, b))
+# matrix / vector product; both produce the rank 1 array [29 67 105]
+print(x.dot(a))
+print(np.dot(x, a))
 
+# sum function
+x = np.array([[1, 2], [3, 4]])
+# compute sum of all elements
+print(np.sum(x))
+# compute sum of each column
+print(np.sum(x, axis=0))
+# compute sum of each row
+print(np.sum(x, axis=1))
 
-# pg 84 array math
+# transpose function
+print(x)
+print(x.T)
+# note that taking the transpose of a rank 1 array does nothing
+v = np.array([1, 2, 3])
+print(v)
+print(v.T)
+
+# broadcasting
+# create a matrix
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# create a vector
+v = np.array([1, 0, 1])
+# create an empty matrix with the same shape as a
+b = np.empty_like(a)
+# add the vector v to each row of the matrix x with an explict loop
+for i in range(3):
+    b[i, : ] = a[i, : ] + v
+print(b)
+# broadcasting for large matrix
+# stack 3 copies of v on top of each other
+vv = np.tile(v, (3, 1))
+print(vv)
+# add a and vv elementwise
+b = a + vv
+print(b)
+
+# pg 88 broadcasting using NumPy
 
 
 
