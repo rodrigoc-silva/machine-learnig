@@ -177,7 +177,43 @@ print(vv)
 b = a + vv
 print(b)
 
-# pg 88 broadcasting using NumPy
+# broadcasting using NumPy
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+v = np.array([1, 0, 1])
+# add v to each row of a using broadcasting
+b = a + v
+print(b)
+# applications of broadcasting
+# compute outer product of vectors
+# v has shape (3, )
+v = np.array([1, 2, 3])
+# w has shape (2, )
+w = np.array([4, 5])
+# to compute an outer product, we first reshape v to be a column
+# vector of shape (3, 1); we can then broadcast it against w to yield
+# an output of shape (3,2), which is the outer product of v and w:
+print(np.reshape(v, (3, 1)) * w)
+
+# add a vector to each row of a matrix
+x = np.array([[1, 2, 3], [4, 5, 6]])
+# x has shape (2, 3) and v has shape (3, ), so they broadcast to (2, 3)
+print(x + v)
+
+# add a vector to each column of a matrix
+# x has shape (2, 3) and w has shape (2, ).
+# if we transpose x then it has shape (3, 2); transposing this result
+# yields the final result of shape (2, 3) which is the matrix x with
+# the vector w added to each column
+print((x.T + w).T)
+# another solution is to reshape w toe be a row vector of shape (2, 1);
+# we can then broadcast it directly against x to produce the same output
+print(x + np.reshape(w, (2, 1)))
+
+# multiply a matrix bt a constant:
+# has shape (2, 3). Numpy treats scalars as arrays of shape ();
+# these can be broadcast together to shape (2, 3)
+print(x * 2)
+
 
 
 
