@@ -14,4 +14,23 @@ data = {'Gender':['F', 'M', 'M'], 'Emp_ID': ['E01', 'E02', 'E03'],
 df = pd.DataFrame(data, columns=['Emp_ID', 'Gender', 'Age'])
 print(df)
 
-# page 90 reading and writing data
+# reading / writing data from csv, text, Excel
+# df = pd.read_csv('mtcars.csv')
+# df = pd.read_csv('mtcars.txt', sep='\t')
+# df = pd.read_excel('mtcars.xlsx')
+# reading for multiple sheets of same Excel into different dataframes
+# xlsx = pd.ExcelFile('mtcars.xlsx')
+# sheet1_df = pd.read_excel(xlsx, 'Sheet1')
+# sheet2_df = pd.read_excel(xlsx, 'Sheet2')
+
+# writing
+# index = False parameter will not write the index values, default is True
+# df.to_csv('newFile.csv', index=False)
+# df.to_csv('newFile.txt', sep='\t', index=False)
+# df.to_excel('newFile.xlsx', sheet_name='1', index=False)
+
+# basic statistics on dataframe
+# describe() returns min, first quartile, median,
+# third quartile, max on each column
+df = pd.read_csv('iris.csv')
+print(df.describe())
