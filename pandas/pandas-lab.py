@@ -93,4 +93,28 @@ print(pd.merge(df_1, df_2, on='emp_id', how='inner'))
 # outer join two frames
 print(pd.merge(df_1, df_2, on='emp_id', how='outer'))
 
-# pg98 grouping
+# grouping
+# grouping operation
+df = pd.DataFrame({'Name': ['jack', 'jane', 'jack', 'jane',
+                            'jack', 'jane', 'jack', 'jane'],
+                   'State': ['CA', 'CA', 'NY', 'AR', 'NY',
+                             'NY', 'CA', 'AR'],
+                   'Grade': ['A', 'A', 'B', 'A', 'C', 'B',
+                             'C', 'A'],
+                   'Age': np.random.uniform(24, 50, size=8),
+                   'Salary': np.random.uniform(3000, 5000, size=8)})
+
+print(df)
+# custom order
+# df = pd.DataFrame(data, columns=['Name', 'State', 'Age', 'Salary'])
+
+# find max age and salary by name / state
+print(df.groupby(['Name', 'State']).max())
+
+# pivot tables
+# find mean age for each grade by state and name
+print(pd.pivot_table(df, values='Age', index=['State', 'Name'], columns=['Grade']))
+
+
+
+
